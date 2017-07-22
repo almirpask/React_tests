@@ -45,13 +45,33 @@ let Button = React.createClass({
     },
     render:function(){
         let  btnClass = this.state.click? 'btn btn-success' : 'btn btn-default';
-        let  textActive = this.state.click? this.props.textActive : 'Sem texto';
+        let  textActive = this.state.click? 'Enviado!' : this.props.textActive;
         return(
-            <button onClick={ this.toggleClick } className={btnClass}> {textActive} {this.props.title}</button>
+            <button onClick={ this.toggleClick } className={btnClass}> {textActive}</button>
         )
     }
 })
 
+let Form = React.createClass({
+    render: function(){
+        return (
+            <form>
+                <div className="form-group">
+                    <label htmlFor="name">Nome</label>
+                    <input type="text" id="nome" className="form-control"/>
+                </div>
+                 <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" className="form-control"/>
+                </div>
+                 <div className="form-group">
+                    <label htmlFor="messenger">Messenger</label>
+                    <textarea name="" id="messenger" cols="30" rows="3" className="form-control"></textarea>
+                </div>
+            </form>
+        )
+    }
+});
 
 
 let Page = React.createClass({
@@ -62,7 +82,8 @@ let Page = React.createClass({
                 <div className="container">
                     <Title title="Teste Props"/>
                     <div className="row">
-                        <Button title="Teste Props" textActive="Ativo"/>
+                        <Form/>
+                        <Button textActive="Send"/>
                     </div>  
                 </div>
             </myElement>
